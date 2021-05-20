@@ -1,7 +1,7 @@
 package bean;
 
 public class MovieBean {
-	
+
 	private String name, actors, awards;
 
 	public String getName() {
@@ -27,7 +27,5 @@ public class MovieBean {
 	public void setAwards(String awards) {
 		this.awards = awards;
 	}
-	
+
 }
-	
-	
