@@ -75,7 +75,9 @@ public class MovieStart {
 				System.out.println(addName + " is added to the database");
 			}
 
+			// Close scanner and connection
 			scanner.close();
+			MovieConnection.closeConnection();
 
 		}
 

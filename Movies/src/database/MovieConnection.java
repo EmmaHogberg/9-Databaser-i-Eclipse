@@ -38,7 +38,7 @@ public class MovieConnection {
 
 	}
 
-	//Method to get actors in one special movie
+	// Method to get actors in one special movie
 	public static ArrayList<MovieBean> getActorsInMovie(String name, ArrayList<MovieBean> beans) {
 
 		try {
@@ -60,6 +60,7 @@ public class MovieConnection {
 			return beans;
 
 		} catch (SQLException ex) {
+			System.out.println("getActorsInMovie()");
 			System.out.println("SQLException: " + ex.getMessage());
 			System.out.println("SQLState: " + ex.getSQLState());
 			System.out.println("VendorError: " + ex.getErrorCode());
@@ -90,6 +91,7 @@ public class MovieConnection {
 			return beans;
 
 		} catch (SQLException ex) {
+			System.out.println("getMovieNameWithAward()");
 			System.out.println("SQLException: " + ex.getMessage());
 			System.out.println("SQLState: " + ex.getSQLState());
 			System.out.println("VendorError: " + ex.getErrorCode());
@@ -120,7 +122,7 @@ public class MovieConnection {
 			return beans;
 
 		} catch (SQLException ex) {
-			// TODO Auto-generated catch block
+			System.out.println("Error in getMovieNameWithActor()");
 			System.out.println("SQLException: " + ex.getMessage());
 			System.out.println("SQLState: " + ex.getSQLState());
 			System.out.println("VendorError: " + ex.getErrorCode());
@@ -152,7 +154,7 @@ public class MovieConnection {
 			return beans;
 
 		} catch (SQLException ex) {
-			// TODO Auto-generated catch block
+			System.out.println("Error in getAwardsWithActor()");
 			System.out.println("SQLException: " + ex.getMessage());
 			System.out.println("SQLState: " + ex.getSQLState());
 			System.out.println("VendorError: " + ex.getErrorCode());
@@ -178,20 +180,30 @@ public class MovieConnection {
 			stmt.setString(5, awards);
 
 			stmt.executeUpdate();
-
 			conn.endRequest();
-			conn.close();
+
 			return true;
 
 		} catch (SQLException ex) {
-			// TODO Auto-generated catch block
+			System.out.println("Error in addToDatabase()");
 			System.out.println("SQLException: " + ex.getMessage());
 			System.out.println("SQLState: " + ex.getSQLState());
 			System.out.println("VendorError: " + ex.getErrorCode());
-
 		}
 
 		return false;
+
+	}
+
+	public static void closeConnection() {
+
+		try {
+			conn.close();
+		} catch (SQLException ex) {
+			System.out.println("SQLException: " + ex.getMessage());
+			System.out.println("SQLState: " + ex.getSQLState());
+			System.out.println("VendorError: " + ex.getErrorCode());
+		}
 
 	}
 
