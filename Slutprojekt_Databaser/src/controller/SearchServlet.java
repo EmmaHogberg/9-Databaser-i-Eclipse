@@ -27,9 +27,10 @@ public class SearchServlet extends HttpServlet {
 
 		ArrayList<BaseBean> searchResults = new ArrayList<BaseBean>();
 
-		// check if connection is open?
+		// Check if connection is open
 		if (SQLconnection.connectSQL()) {
-			// send the string
+
+			// Send the string
 			searchResults = SQLconnection.stateSQL(searchString, searchResults);
 
 			request.setAttribute("searchResult", searchResults);

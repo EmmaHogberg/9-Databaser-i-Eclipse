@@ -1,42 +1,48 @@
 package methods;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class SearchStringMethods {
 
-	public static List<String> getFirstSearchArrayList(String searchString, List<String> firstSearchStrings) {
+	public static List<String> getpartialSearchArrayLiStrings(String searchString) {
 
-//		String str[] = searchString.trim().split("\\s+|,\\s*|\\.\\s*");
-		String str[] = searchString.trim().split(" ");
-		firstSearchStrings = Arrays.asList(str);
+		// Input words with 3 or more letters added to ArrayList
+		List<String> searchWords = new ArrayList<String>();
+		String words[] = searchString.trim().split(" ");
 
-		for (String s : firstSearchStrings) {
-			System.out.println(s);
+		for (String word : words) {
+			if (word.length() >= 3) {
+				searchWords.add(word);
+			}
 		}
 
-		return firstSearchStrings;
-
-	}
-
-	public static List<String> getSecondSearchArrayList(List<String> firstSearchStrings,
-			List<String> secondSearchStrings) {
+		// Split up words in parts
+		Set<String> parts = new HashSet<String>();
 
 		int minLength = 3;
 
-		for (String word : firstSearchStrings) {
+		for (String word : searchWords) {
 
 			for (int i = 0; i < word.length(); i++) {
 
 				for (int j = i + minLength; j <= word.length(); j++) {
-					secondSearchStrings.add(word.substring(i, j));
-					System.out.println(secondSearchStrings);
+					parts.add(word.substring(i, j));
+
 				}
 			}
 
 		}
 
-		return null;
+		System.out.println(parts);
+
+		//
+		List<String> searchParts = new ArrayList<String>();
+		searchParts.addAll(parts);
+
+		return searchParts;
 
 	}
 
